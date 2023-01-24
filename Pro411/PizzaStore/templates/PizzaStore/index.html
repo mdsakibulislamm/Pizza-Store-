@@ -1,0 +1,297 @@
+{% extends 'PizzaStore/basic.html' %}
+{% load static %}
+{% block css %}
+            .carousel-inner img {
+            width: 100%;
+            height: 100%;
+            }
+            
+            .ull li
+            {
+                padding: 10px;
+            }
+
+            .new a:hover 
+            {
+                background-color: red;
+            }
+            
+
+            .mar
+            {
+                margin-top: 10px;
+            }
+            .mar a
+            {
+                text-align: center;
+            }
+            .mar img
+            {
+               padding: 10px;
+               width: 100%;
+               height: 100%;
+               
+            }
+            .deal
+            {
+                margin-top: 40px;
+                
+            }
+
+            .dealsstyle
+            {
+                margin:0 auto 15px;
+                text-align: center;
+                max-width: 1050px;
+                position: relative;
+            }
+
+            .dealsstyle::before
+            {
+                position: absolute;
+                content: '';
+                width:39%;
+                height: 1px;
+                overflow: hidden;
+                background: #bbbbbb;
+                top: 15px;
+                left:0;
+                display: block;
+                
+            }
+
+            .dealsstyle::after
+            {
+                position: absolute;
+                content: '';
+                width:39%;
+                height: 1px;
+                overflow: hidden;
+                overflow-y: hidden;
+                overflow-x: hidden;
+                background: #bbbbbb;
+                top: 15px;
+                right:0;
+                display: block;
+                
+            }
+
+           
+            @media (max-width: 1200px) and (min-width: 1001px)
+            {
+                .dealsstyle::before
+                {
+                    width:38%;
+                }
+                .dealsstyle::after
+                {
+                    width:38%;
+                }
+
+            }
+
+            @media (max-width: 1000px) and (min-width: 801px)
+            {
+                .dealsstyle::before
+                {
+                    width:34%;
+                }
+                .dealsstyle::after
+                {
+                    width:34%;
+                }
+            }
+            @media (max-width: 800px) 
+            {
+                .dealsstyle::before
+                {
+                   width:29%;
+                }
+                .dealsstyle::after
+                {
+                    width:29%;
+                }
+            }
+            @media only screen and (max-width: 750px)
+            {
+                .dealsstyle::before
+                {
+                   width:28%;
+                }
+                .dealsstyle::after
+                {
+                    width:28%;
+                }
+            }
+            
+            @media only screen and (max-width: 520px)
+            {
+                .dealsstyle::before
+                {
+                   width:26%;
+                }
+                .dealsstyle::after
+                {
+                    width:26%;
+                }
+            }
+
+            @media only screen and (max-width: 490px)
+            {
+                .dealsstyle::before
+                {
+                   width:25%;
+                }
+
+                .dealsstyle::after
+                {
+                    width:25%;
+                }
+            }
+            @media only screen and (max-width: 450px)
+            {
+                .dealsstyle::before
+                {
+                   display: none;
+                }
+
+                .dealsstyle::after
+                {
+                    display: none;
+                }
+            }
+            
+            .link
+            {
+                background-color:rgb(30, 176, 221);
+                color: white;
+                width: 100%;
+                border-radius: 3px;
+                margin-top: 20px; 
+            }
+
+            #footer
+            {
+                background: #181818 !important;
+                margin-top:20px;
+                padding-top: 20px;
+                padding-left: 25px;
+                padding-bottom: 2px;
+            }
+            ._back
+            {
+                color: #ffffff;
+            }
+
+            #footer h5
+            {
+                padding-bottom: 0px;
+                margin-bottom: 7px;
+                color: #ffffff;
+                padding-top: 0px;
+                font-size: 17px;
+                font-weight: 600;
+            }
+
+            #footer a
+            {
+                text-decoration: none !important;
+                color: #ffffff;
+                background: transparent;
+                font-size: 15px;
+            }
+            .icon
+            {
+                padding-left: 10px;
+            }
+            .ul_style
+            {
+                list-style: none;
+                padding-left: 0;
+            }
+
+            #footer ul.ul_style
+            {
+                font-size: 16px;
+            }
+            .rights
+            {
+                font-size: 15px;
+                margin-top: 10px;
+            }
+            .signup
+            {
+                background-color: red;
+                padding: 7px;
+                margin-top: 5px;
+                text-decoration: none;
+                border-radius: 5px;
+                color: white;
+            }
+            .signup:hover
+            {
+                text-decoration: none;
+            }
+       {% endblock %}    
+       
+        {% block body%}
+    <div id="demo" class="carousel slide" data-ride="carousel">
+
+            
+            <ul class="carousel-indicators">
+              <li data-target="#demo" data-slide-to="0" class="active"></li>
+              <li data-target="#demo" data-slide-to="1"></li>
+              <li data-target="#demo" data-slide-to="2"></li>
+            </ul>
+            
+           
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="{% static 'PizzaStore/Pizza1.jpg'%}" alt="Los Angeles">
+              </div>
+              <div class="carousel-item">
+                <img src="{% static 'PizzaStore/Pizza2.jpg'%}" alt="Chicago">
+              </div>
+              <div class="carousel-item">
+                <img src="{% static 'PizzaStore/Pizza3.jpg'%}" alt="New York">
+              </div>
+            </div>
+            
+           
+            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#demo" data-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </a>
+          </div>
+          <div class="deal container">
+            <h5 class="dealsstyle">Our Most Populer Deals</h5>
+          </div>
+          <div class="mainbody container">
+              <div class="row mar">
+                  <div class="col-md-6 col-sm-13 col-xs-12 segment-one">
+                      <a href="#">
+                          <img src="{% static 'PizzaStore/Offer1.jpg'%}" class="offerimage" href="#" alt="Offer1" height="300px" width="600px">
+                      </a>
+                  </div>
+                  <div class="col-md-6 col-sm-13 col-xs-12 segment-one">
+                      <a href="#">
+                          <img src="{% static 'PizzaStore/Offer2.jpg'%}" alt="Offer2" height="300px" width="600px">
+                      </a>
+                  </div>
+                  <div class="col-md-6 col-sm-13 col-xs-12 segment-one">
+                      <a href="#">
+                          <img src="{% static 'PizzaStore/Offer3.jpg'%}" alt="Offer1" height="300px" width="600px">
+                      </a> 
+                  </div>
+                  <div class="col-md-6 col-sm-13 col-xs-12 segment-one">
+                      <a href="#">
+                          <img src="{% static 'PizzaStore/Offer4.jpg'%}" alt="Offer2" height="300px" width="600px">
+                      </a>
+                  </div>
+                  <a href="#" class="link">View Our Deals</a> 
+              </div>
+          </div>
+          {%block js%} {%endblock%}
+        {% endblock %}

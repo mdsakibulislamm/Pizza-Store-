@@ -1,0 +1,311 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+       
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <style>
+           {% block css %}{% endblock %}
+           #footer
+            {
+                background: #181818 !important;
+                margin-top:20px;
+                padding-top: 20px;
+                padding-left: 25px;
+                padding-bottom: 2px;
+            }
+            ._back
+            {
+                color: #ffffff;
+            }
+
+            #footer h5
+            {
+                padding-bottom: 0px;
+                margin-bottom: 7px;
+                color: #ffffff;
+                padding-top: 0px;
+                font-size: 17px;
+                font-weight: 600;
+            }
+
+            #footer a
+            {
+                text-decoration: none !important;
+                color: #ffffff;
+                background: transparent;
+                font-size: 15px;
+            }
+            .icon
+            {
+                padding-left: 10px;
+            }
+            .ul_style
+            {
+                list-style: none;
+                padding-left: 0;
+            }
+
+            #footer ul.ul_style
+            {
+                font-size: 16px;
+            }
+            .rights
+            {
+                font-size: 15px;
+                margin-top: 10px;
+            }
+            .signup
+            {
+                background-color: red;
+                padding: 7px;
+                margin-top: 5px;
+                text-decoration: none;
+                border-radius: 5px;
+                color: white;
+            }
+            .signup:hover
+            {
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+                <div class="container">
+                    <a class="navbar-brand brand" href="#">PizzaStore</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse new justify-content-center" id="collapsibleNavbar">
+                <ul class="navbar-nav ml-auto ull">
+                <li class="nav-item active">
+                    <a class="nav-link text-white text-center" href="/">Home</a>
+                </li>
+                <li>
+                    <a class="nav-link text-white text-center" href="menu">Menu</a>
+                </li>
+                <li>
+                    <a class="nav-link text-white text-center" href="about">About</a>
+                </li>
+                {% if request.user.is_authenticated %}
+                <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{request.user}}
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/logout">Logout</a>
+                  </div>
+              </ul>
+                {% else %}
+                <li class="nav-item dropdown">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white text-center" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Login
+                        </a>
+                        <div class="dropdown-menu logiin" style="padding: 15px; padding-bottom: 10px; width: 230px;">
+                            <form class="form-horizontal" method="POST" action="/login">
+                                <input class="form-control login" type="text" id="lusername" name="lusername" placeholder="Username.."><br>
+                                <input class="form-control login" type="password" id="lpassword" name="lpassword" placeholder="Password.."><br>
+                                {% csrf_token %}
+                                <input class="btn btn-primary" type="submit" name="submit" value="Login">
+                                <a href="signup" class="signup">Signup</a>
+                            </form>
+                        </div>
+                    </li>
+                </li>
+                {% endif %}
+                <button type="button" class="btn btn-secondary mx-2" id="popcart" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true" 
+                data-content="">
+                  Cart(<span id="cart">0</span>)
+                </button>
+              </div>
+            </ul>
+        </div>
+            
+     </div>
+ </nav>
+ </div>
+ {% block body %}{% endblock %}
+
+          <section id="footer" class="_back"> 
+            <footer>
+                <div class="footer-top" style="margin-top: 3%; background: #181818 !important;">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-6 col-xs-12 segment-one">
+                                <h5>Order Now</h5>
+                                <ul class="ul_style">
+                                    <li>
+                                        <a href="#">Pizza</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Pasta</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Burger</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Drinks</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-3 col-sm-6 col-xs-12 segment-one">
+                                <h5>Useful Links</h5>
+                                <ul class="ul_style">
+                                    <li>
+                                        <a href="#">Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Menu</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">About</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Policy</a>
+                                    </li>
+                                </ul>
+                            </div>
+    
+                            <div class="col-md-3 col-sm-6 col-xs-12 segment-one social">
+                                <h5>Follow Us</h5>
+                                <p>You can follow us on social media to get update information</p>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter icon"></i></a>
+                                <a href="#"><i class="fa fa-instagram icon"></i></a>
+                                <a href="#"><i class="fa fa-linkedin icon"></i></a>
+                            </div>
+                            <div class="col-md-3 col-sm-6 col-xs-12 segment-one">
+                                <h5>Our Branches</h5>
+                                <ul class="ul_style">
+                                    <li><a>Dhaka</a></li>
+                                    <li><a>Chattagram</a></li>
+                                    <li><a>Cox's Bazar</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-center rights">© 2020 , Pizza Store Bangladesh. All rights reserved.</p>
+                        </div>
+    
+                    </div>
+    
+                </div>
+            </footer>
+        </section>
+        <script>
+            console.log("working");
+            if(localStorage.getItem('cart')==null)
+            {
+              var cart={};
+            }
+            else
+            {
+              cart=JSON.parse(localStorage.getItem('cart'));
+              updatecart(cart);
+            }
+            $('.divpr').on('click','button.cart',function()
+            {
+              console.log("item clicked");
+              var id_str=this.id.toString();
+              console.log(id_str);
+              if(cart[id_str]!=undefined)
+              {
+                cart[id_str]=cart[id_str]+1;
+              }
+              else
+              {
+                cart[id_str]=1;
+              }
+              updatecart(cart);
+              
+            });
+            $('#popcart').popover({ delay: 100 });
+            updatePopover(cart);
+            function updatePopover(cart)
+            {
+                console.log('We are inside updatePopover');
+                var popstr = "";
+                popstr = popstr + "<h5> Cart for your items in my shopping cart </h5><div class='mx-2 my-2'>";
+                var i = 1;
+                for (var item in cart){
+                    popstr = popstr + "<b>" + i + "</b>. ";
+                    console.log(item);
+                    popstr = popstr + document.getElementById('name' + item).innerHTML + "... Qty: " + cart[item] +" Price:"+document.getElementById('price' + item).innerHTML +'<br>';
+                    i = i+1;
+                }
+                popstr = popstr + "</div>" + "<a  href='#' class=' mx-2 my-2' id ='checkout' style='color:black; background-color:light-blue;'>CHECKOUT</a>" + "<a  id='clearcart' href='#' > CLEARCART</a>" 
+                console.log(popstr);
+                document.getElementById('popcart').setAttribute('data-content', popstr);
+                $('#popcart').popover('show');
+            }
+            function updatecart(cart)
+            {
+              for(var item in cart)
+              {
+                console.log(item);
+                document.getElementById('div' +item).innerHTML="<button id='minus" + item + "' class='btn btn-primary minus'>-</button> <span id='val" + item + "''>" + cart[item] + "</span> <button id='plus" + item + "' class='btn btn-primary plus'> + </button>";
+              }
+              localStorage.setItem('cart',JSON.stringify(cart))
+              document.getElementById('cart').innerHTML=Object.keys(cart).length;
+              updatePopover(cart);
+            }
+        
+            $('[data-toggle="popover"]').on('shown.bs.popover', function() {
+                // do something…
+                console.log('I am inside testing function')
+                console.log($('#clearcart'))
+                $('#clearcart').click(function() {
+        
+                    console.log('Inside Clear Cart Function')
+                    cart = JSON.parse(localStorage.getItem('cart'));
+                    for (var item in cart) {
+                        document.getElementById('div' + item).innerHTML = '<button id="' + item + '" class="btn btn-primary cart">Add To Cart</button>'
+                    }
+                    localStorage.clear();
+                    cart = {};
+                    updatecart(cart);
+        
+                });
+            });
+            
+            $('.divpr').on("click","button.minus",function()
+            {
+              a = this.id.slice(5,8);
+              cart[a]=cart[a]-1;
+              cart[a]=Math.max(0,cart[a])
+              if(cart[a]==0)
+              {
+                console.log("cartempty");
+                document.getElementById('div' + a).innerHTML = '<button id="' + a + '" class="btn btn-primary cart">Add To Cart</button>'
+                delete cart[a];
+              }
+              else
+              {
+                document.getElementById('val'+a).innerHTML=cart[a];
+              }
+              updatecart(cart);
+            });
+        
+            $('.divpr').on('click','button.plus',function()
+            {
+              a = this.id.slice(4,8);
+              cart[a]=cart[a]+1;
+              document.getElementById('val'+a).innerHTML=cart[a];
+              updatecart(cart);
+            });
+            
+          </script>
+       
+    </body>
+</html>

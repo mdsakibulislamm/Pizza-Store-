@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"> 
+        <link type="text/css" rel="stylesheet" href="{% static 'PizzaStore/LoginStyle.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body style="overflow: hidden;">
+        <div class="wrapper">
+            <div class="login-Form">
+                <div class="title">
+                    Sign Up
+                </div>
+                <form action="/regsignup" method="POST">
+                    <div class="input-form username">
+                    <input type="text" placeholder="username" name="username" id="username" class="input">
+                    <i class="fa fa-user"></i>
+                    </div>
+                    <div class="input-form email">
+                        <input type="text" placeholder="email" name="email" id="email" class="input">
+                        <i class="fa fa-envelope"></i>
+                    </div>
+        
+                    <div class="input-form password">
+                        <input type="password" placeholder="password" name="pass1" id="pass1" class="input">
+                        <i class="fa fa-key icon"></i>
+                    </div>
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">Signup</button>
+                    <div class="al">
+                        <p>Already have an account? <a href="/">Log In</a></p>
+                        <a href="#" class="forgot">Forgot password?</a>
+                    </div>  
+                </form>
+                
+            </div>
+        </div>
+    </body>
+</html>
